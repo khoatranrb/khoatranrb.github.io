@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+      Khoa Blog
+      
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/page.css">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="alternate" title="Beta" href="http://khoablogs.github.io">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Khoa Blog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Science Blog!" />
+<meta property="og:description" content="Science Blog!" />
+<link rel="canonical" href="http://localhost:4000/MD/3.1.%20PAC%20learning" />
+<meta property="og:url" content="http://localhost:4000/MD/3.1.%20PAC%20learning" />
+<meta property="og:site_name" content="Khoa Blog" />
+<meta name="google-site-verification" content="UA-96359860-1" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/MD/3.1.%20PAC%20learning","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>
+      <nav class="top-nav teal">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a class="page-title" href="/">Khoa Blog</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <ul id="slide-out" class="side-nav fixed">
+        <li>
+          <div class="userView">
+            <div class="background"></div>
+            <a href="https://github.com/khoatranrb" target="_blank"><img class="circle z-depth-2" src="/assets/res/user.png"></a>
+            <span class="white-text name">Khoa Tran</span>
+            <span class="white-text email">khoatranrb@gmail.com</span>
+          </div>
+        </li>
+        <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+        <li><a class="waves-effect" href="/projects"><i class="material-icons">description</i>Projects</a></li>
+        <li><a class="waves-effect" href="/categories"><i class="material-icons">sort</i>Categories</a></li>
+        <li><a class="waves-effect" href="/tags"><i class="material-icons">label</i>Tags</a></li>
+        <li><a class="waves-effect" href="http://khoablogs.github.io" target="_blank"><i class="material-icons">rss_feed</i>Beta</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="/about"><i class="material-icons">person</i>About</a></li>
+        <li><a class="waves-effect" href="/contact"><i class="material-icons">email</i>Contact</a></li>
+      </ul>
+    </header>
+    <main>
+
+<div class="container">
+  <div id="page-info">
+  <h3></h3>
+</div>
+<div class="row">
+  <h5 id="31-pac-learning"><strong>3.1. PAC learning</strong></h5>
+
+<ul>
+  <li>
+    <p>In <a href="https://khoablog.github.io/2020/04/05/uml-3">UML_3</a>, we have shown that for a finite $\mathcal{H}$ hypothesis class and a sufficiently large training sample (follow the $\mathcal{D}$ distribution and labeling function $f$) then output of $\mathcal{H}$ will be probably approximately correct. Now, we define <em>Probably Approximately Correct</em> (PAC) learning.</p>
+  </li>
+  <li>
+    <p><strong>Define</strong> (PAC learning): $\mathcal{H}$ is PAC learnable if there exist a function $m_{\mathcal{H}}(\epsilon,\delta):(0,1)^2\to\N$ with property:</p>
+
+    <ul>
+      <li>For every $(\epsilon,\delta)\in(0,1)$, every $\mathcal{D}$ over $\mathcal{X}$ and every $f:\mathcal{X}\to{0,1}$, the relizable assumption (<em>Giả thuyết tính khả thi</em> in <a href="https://khoablog.github.io/2020/04/05/uml-3">UML_3</a>) holds with respect $\mathcal{H,D,f}$, then when running the learning algorithm on $m\ge m_{\mathcal{H}}(\epsilon,\delta)$, the algorithm returns a hypothesis $h$ such that, with probability of at least $1-\delta$ that we have $L_{(\mathcal{D,f})}(h)\le\epsilon$.</li>
+    </ul>
+  </li>
+  <li>
+    <p>In PAC learning, we have two parameters:</p>
+
+    <ul>
+      <li>$\epsilon$ determines how far the output classifier can be optimal.</li>
+      <li>$\delta$ indicating how likely $h$ meets accuracy $\epsilon$.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Sample complexity</strong>:</p>
+
+    <ul>
+      <li>
+        <p>The function $m_{\mathcal{H}}(\epsilon,\delta):(0,1)^2\to\N$ determines the sample complexity of $\mathcal{H}$. How many samples are required to guarantee property of PAC? It also depend on the size of $\mathcal{H}$.</p>
+      </li>
+      <li>
+        <p>If $\mathcal{H}$ is PAC learnable, there are many $m_{\mathcal{H}}$ that satisfy the requirement given in the <strong>Define</strong>. Thus, we will define the sample complexity of $\mathcal{H}$ so that for any $\epsilon, \delta$, $m_{\mathcal{H}}(\epsilon,\delta)$ can satisfy the requirement of PAC. Let remember the conclusion of the analysis of finite hypothesis class in <a href="https://khoablog.github.io/2020/04/05/uml-3">UML_3</a>. Now we have:</p>
+
+        <p><em>Corollary</em>:  Every finite hypothesis $\mathcal{H}$ is PAC learnable with sample complexity:
+\(m_{\mathcal{H}}(\epsilon,\delta)\le \frac{\log(|\mathcal{H}|/\delta)}{\epsilon}\)</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="reference">Reference:</h5>
+
+<ul>
+  <li><a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf">Understanding machine learning-theory algorithms.</a></li>
+  <li><a href="https://uetailab.com/index.php/2019/10/24/uml3-1-mo-hinh-hoc-pac-probably-approximately-correct-hoc-xap-xi-dung-voi-xac-suat-cao/">UML3.1 – Mô hình học PAC.</a></li>
+</ul>
+
+</div>
+</div>
+
+    </main>
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <img src="/assets/res/logo.png" alt="logo"/>
+            <p class="grey-text text-lighten-4">Science Blog!
+</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          &#xA9; 2020 Khoa Blog. All rights reserved. Powered by <a href="https://github.com/khoablog/khoablog.github.io">Khoa</a>.
+        </div>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})
+      (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-96359860-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

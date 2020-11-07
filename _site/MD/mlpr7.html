@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+      Khoa Blog
+      
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/page.css">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="alternate" title="Beta" href="http://khoablogs.github.io">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Khoa Blog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Science Blog!" />
+<meta property="og:description" content="Science Blog!" />
+<link rel="canonical" href="http://localhost:4000/MD/mlpr7" />
+<meta property="og:url" content="http://localhost:4000/MD/mlpr7" />
+<meta property="og:site_name" content="Khoa Blog" />
+<meta name="google-site-verification" content="UA-96359860-1" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/MD/mlpr7","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>
+      <nav class="top-nav teal">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a class="page-title" href="/">Khoa Blog</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <ul id="slide-out" class="side-nav fixed">
+        <li>
+          <div class="userView">
+            <div class="background"></div>
+            <a href="https://github.com/khoatranrb" target="_blank"><img class="circle z-depth-2" src="/assets/res/user.png"></a>
+            <span class="white-text name">Khoa Tran</span>
+            <span class="white-text email">khoatranrb@gmail.com</span>
+          </div>
+        </li>
+        <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+        <li><a class="waves-effect" href="/projects"><i class="material-icons">description</i>Projects</a></li>
+        <li><a class="waves-effect" href="/categories"><i class="material-icons">sort</i>Categories</a></li>
+        <li><a class="waves-effect" href="/tags"><i class="material-icons">label</i>Tags</a></li>
+        <li><a class="waves-effect" href="http://khoablogs.github.io" target="_blank"><i class="material-icons">rss_feed</i>Beta</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="/about"><i class="material-icons">person</i>About</a></li>
+        <li><a class="waves-effect" href="/contact"><i class="material-icons">email</i>Contact</a></li>
+      </ul>
+    </header>
+    <main>
+
+<div class="container">
+  <div id="page-info">
+  <h3></h3>
+</div>
+<div class="row">
+  <h5 id="1-cross-entropy"><strong>1. Cross entropy</strong></h5>
+
+<ul>
+  <li>
+    <p><strong>Cross-entropy</strong> is a measure the difference between two probability of distributions $p$ and $q$, denoted as:
+\(\mathbf{H}(p,q)=-\int p(x)\log q(x)\text{d}x\)</p>
+  </li>
+  <li>
+    <p><strong>Cross-entropy</strong> calculates the number of bits required to represent or transmit an average event from one distribution compared to another distribution. In formula $(1)$, $p(x)$ is the target distribution, $q(x)$ is the approximation of the target distribution.</p>
+  </li>
+  <li>
+    <p>By Lagrange multiplier method, we can prove $\mathbf{H}(p,q)$ reaches the minimum value when $p(x)=q(x)$, it means:
+\(\begin{align}
+\min \mathbf{H}(p,q)&amp;=\mathbf{H}(p,p)\\
+&amp;=-\int p(x)\log p(x)\text{d}x=\H[p]\tag2
+\end{align}\)</p>
+  </li>
+</ul>
+
+<p><strong>Note that:</strong> In this blog, we denote:</p>
+
+<ul>
+  <li><strong>entropy</strong> of $p(x)$ as $\H[p]$</li>
+  <li><strong>entropy</strong> of $p(x ,y)$ as $\H[(x,y)]$</li>
+  <li><strong>cross entropy</strong> of $p(x)$ and $q(x)$ as $\mathbf{H}(p,q)$.</li>
+</ul>
+
+<h5 id="2-kullback-leibler-divergence"><strong>2. Kullback-Leibler divergence</strong></h5>
+
+<ul>
+  <li>
+    <p><strong>KL divergence</strong> or <strong>relative entropy</strong> is a method to measure the <em>dissimilarity</em> of two probability distribution, denoted by $p$ and $q$. It is defined:
+\(\mathbf{KL}(p||q)=\int p(x)\log\frac{p(x)}{q(x)}\text{d}x\tag3.\)
+In discrete domain, <strong>KL divergence</strong> is written as:
+\(\mathbf{KL}(p||q)=\sum_kp_k\log\frac{p_k}{q_k}\tag4\)</p>
+
+    <p>Difference from cross-entropy, <strong>KL divergence</strong> is the average number of <em>extra</em> bits needed to encode data when we use distribution $q(x)$ instead of true distribution $p(x)$.</p>
+  </li>
+  <li>
+    <p>We can rewrite:
+\(\mathbf{KL}(p||q)=\int p(x)\log p(x)\text{d}x-\int p(x)\log q(x)\text{d}x=-\H[p]+\mathbf{H}(p,q)\tag5\)</p>
+  </li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Theorem 1:</strong> $\mathbf{KL}(p</td>
+      <td> </td>
+      <td>q)\ge0$ with equality iff $p=q$.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Proof:</em></p>
+
+<p>​	To prove this, we use <strong>Jensen’s inequality</strong> for a convex function:
+\(f(\sum_{i=1}^n\lambda_ix_i)\le\sum_{i=1}^n\lambda_if(x_i)\tag6\)
+​	where $\lambda_i\ge0$ and $\sum_i\lambda_i=1$.</p>
+
+<p>​	We have:
+\(\begin{align}
+-\mathbf{KL}(p||q)&amp;=-\sum_kp(x_k)\log\frac{p(x_k)}{q(x_k)}=\sum_kp(x_k)\log\frac{q(x_k)}{p(x_k)}\tag7\\
+&amp;\le\log\sum_kp(x_k)\frac{q(x_k)}{p(x_k)}=\log\sum_kq(x_k)=\log1=0\tag8\\
+\end{align}\)</p>
+
+<h6 id="21-jensen-shannon-divergence"><strong>2.1. Jensen-Shannon divergence</strong></h6>
+
+<ul>
+  <li>
+    <p>We can see that, both of <strong>cross-entropy</strong> and <strong>KL divergence</strong> are asymmetric. So, both of them cannot used as a measure for two distribution. So, <strong>JS divergence</strong> measure is built based on <strong>KL divergence</strong>:
+\(\mathbf{JS}(p||q)=\mathbf{KL}(p||\frac{p+q}{2})+\mathbf{KL}(q||\frac{p+q}{2})\tag9.\)</p>
+  </li>
+  <li>
+    <p><strong>JS divergence</strong> calculates the <em>dissimilarity</em> of two distribution $p$ and $q$  adopted the <em>dissimilarity</em> of $p$ vs $\frac{p+q}{2}$ and  $q$ vs $\frac{p+q}{2}$. If $p$ and $q$ are more match, <strong>KL divergence</strong> of both of $p$ and $q$ with $\frac{p+q}{2}$ are smaller and more close as 0.</p>
+  </li>
+  <li>
+    <p>From $(1)$ and $(4)$, we can rewrite $(8)$ as:
+\(\begin{align}
+\mathbf{JS}(p||q)&amp;=\mathbf{KL}(p||\frac{p+q}{2})+\mathbf{KL}(q||\frac{p+q}{2})\\
+&amp;=-\H[p]+\mathbf{H}(p,\frac{p+q}{2})-\H[q]+\mathbf{H}(q,\frac{p+q}{2})\tag{10}\\
+&amp;=-\H[p]-\int p(x)\log \frac{p(x)+q(x)}{2}\text{d}x-\H[q]-\int q(x)\log \frac{p(x)+q(x)}{2}\text{d}x\tag{11}\\
+&amp;=-2\int\frac{p(x)+q(x)}{2}\log \frac{p(x)+q(x)}{2}\text{d}x-\H[p]-\H[q]\tag{12}\\
+&amp;=2.\H[\frac{p+q}{2}]-\H[p]-\H[q]\tag{13}
+\end{align}\)</p>
+  </li>
+  <li>
+    <p>Next, we prove <strong>JS divergence</strong> has upper limit. We start with:
+\(\begin{align}
+\mathbf{KL}(p||\frac{p+q}{2})=\int p(x)\log\frac{2p(x)}{p(x)+q(x)}\text{d}x\tag{14}
+\end{align}\)
+We have
+\(\frac{2p(x)}{p(x)+q(x)}\le2\tag{15}\)
+so
+\(\mathbf{KL}(p||\frac{p+q}{2})\le\log2\int p(x)\text{d}x=\log2\tag{16}.\)
+It is equal when $p_k(x)q_k(x)=0$ with all of $k$ values.</p>
+
+    <p>Similarity, we have:
+\(\mathbf{KL}(q||\frac{p+q}{2})\le\log2\int q(x)\text{d}x=\log2\tag{17}.\)
+It is also equal when $p_k(x)q_k(x)=0$ with all of $k$ values.</p>
+
+    <p>Then
+\(\mathbf{JS}(p||q)\le2\log2\tag{18}.\)</p>
+  </li>
+</ul>
+
+<h5 id="reference"><strong>Reference:</strong></h5>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>2.8.2</td>
+          <td>Machine Learning A Probabilistic Perspective</td>
+          <td>K.P. Murphy.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><a href="https://ttic.uchicago.edu/~dmcallester/ttic101-07/lectures/jensen/jensen.pdf" style="color:green">Jensen’s inequality</a>.</li>
+  <li><a href="https://machinelearningmastery.com/cross-entropy-for-machine-learning/" style="color:green">Cross-entropy for machine learning | Machine Learning Mastery</a>.</li>
+  <li><a href="https://phamdinhkhanh.github.io/2020/07/25/GAN_Wasserstein.html#4-jensen-shannon" style="color:green">Bài 44 - Model Wasserstein GAN (WGAN)</a>.</li>
+</ul>
+
+</div>
+</div>
+
+    </main>
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <img src="/assets/res/logo.png" alt="logo"/>
+            <p class="grey-text text-lighten-4">Science Blog!
+</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          &#xA9; 2020 Khoa Blog. All rights reserved. Powered by <a href="https://github.com/khoablog/khoablog.github.io">Khoa</a>.
+        </div>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})
+      (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-96359860-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+      Khoa Blog
+      
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/page.css">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="alternate" title="Beta" href="http://khoablogs.github.io">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Khoa Blog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Science Blog!" />
+<meta property="og:description" content="Science Blog!" />
+<link rel="canonical" href="http://localhost:4000/MD/2.1.%20Binary%20variables" />
+<meta property="og:url" content="http://localhost:4000/MD/2.1.%20Binary%20variables" />
+<meta property="og:site_name" content="Khoa Blog" />
+<meta name="google-site-verification" content="UA-96359860-1" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/MD/2.1.%20Binary%20variables","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>
+      <nav class="top-nav teal">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a class="page-title" href="/">Khoa Blog</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <ul id="slide-out" class="side-nav fixed">
+        <li>
+          <div class="userView">
+            <div class="background"></div>
+            <a href="https://github.com/khoatranrb" target="_blank"><img class="circle z-depth-2" src="/assets/res/user.png"></a>
+            <span class="white-text name">Khoa Tran</span>
+            <span class="white-text email">khoatranrb@gmail.com</span>
+          </div>
+        </li>
+        <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+        <li><a class="waves-effect" href="/projects"><i class="material-icons">description</i>Projects</a></li>
+        <li><a class="waves-effect" href="/categories"><i class="material-icons">sort</i>Categories</a></li>
+        <li><a class="waves-effect" href="/tags"><i class="material-icons">label</i>Tags</a></li>
+        <li><a class="waves-effect" href="http://khoablogs.github.io" target="_blank"><i class="material-icons">rss_feed</i>Beta</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="/about"><i class="material-icons">person</i>About</a></li>
+        <li><a class="waves-effect" href="/contact"><i class="material-icons">email</i>Contact</a></li>
+      </ul>
+    </header>
+    <main>
+
+<div class="container">
+  <div id="page-info">
+  <h3></h3>
+</div>
+<div class="row">
+  <h5 id="21-binary-variables"><strong>2.1. Binary variables</strong></h5>
+
+<ul>
+  <li>
+    <p>Let imagine when flip a coin, the outcome $x$ is ‘heads’ or ‘tails’. We represent it by numerals $x=1$ representing ‘heads’ and $x=0$ representing ‘tails’. Now we call $x$ is binary variable.</p>
+  </li>
+  <li>
+    <p>The probability of $x=1$ will be denoted by the parameter $\mu$ where $0\le\mu\le1$:
+\(p(x=1|\mu)=\mu\tag1\)
+and $p(x=0|\mu)=1-\mu$. The probability distribution of $x$ is a <em>Bernoulli distribution</em>:
+\(\text{Bern}(x|\mu)=\mu^x(1-\mu)^{1-x}\tag2\)
+And we have:
+\(\begin{align}
+\mathbb{E}[x]&amp;=\mu\tag3\\
+\text{var}[x]&amp;=\mu(1-\mu)\tag4
+\end{align}\)</p>
+  </li>
+  <li>
+    <p>In general, when we flip a coin $N$ times and $x=1$ appears $m$ times. This is called <em>Binomial distribution</em>:
+\(\text{Bin}(m|N,\mu)=\begin{pmatrix}
+N\\m
+\end{pmatrix}
+\mu^m(1-\mu)^{N-m}\tag5\)
+where
+\(\begin{pmatrix}
+N\\m
+\end{pmatrix}=\frac{N!}{(N-m)!m!}\tag6\)
+And:
+\(\begin{align}
+\mathbb{E}[m]&amp;=N\mu\tag7\\
+\text{var}[m]&amp;=N\mu(1-\mu)\tag8
+\end{align}\)</p>
+  </li>
+</ul>
+
+<h6 id="211-beta-distribution"><strong>2.1.1. Beta distribution</strong></h6>
+
+<ul>
+  <li>
+    <p>Suppose we have a observed data set $\mathcal{D}={x_1,…,x_N}$. We have to determine $\mu$ so that $p(\mathcal{D}|\mu)$ is the largest. This is <em>Maximum Likelihood</em> method that we will refer later. You just need to know now:
+\(\mu_{ML}=\frac{1}{N}\sum_{i=1}^Nx_i\tag9\)</p>
+  </li>
+  <li>
+    <p>If we just have a small data set, for instance $\mathcal{D}={1,0,1}$, if we use formula $(9)$, we have $\mu=0.667$. Intuitively, we know that is not reasonable.</p>
+  </li>
+  <li>
+    <p>In order to fix this problem, we could choose a prior to be proportional $\mu$ and $1-\mu$, then the posterior distribution, which is proportional to the product of the prior and likelihood function, will have same functional form as both the prior and likelihood. This property is called <em>conjugacy</em>. We choose a prior, called the <em>Beta distribution</em>:
+\(\text{Beta}(\mu|a,b)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\mu^{a-1}(1-\mu)^{b-1}\tag{10}\)
+where <em>Gamma function</em> has been introduced in <a href="https://khoablog.github.io/2020/02/25/math-4" style="color: blue">MATH_4</a>, just to make sure that:
+\(\int_0^1\text{Beta}(\mu|a,b)\text{d}\mu=1\tag{11}\)</p>
+  </li>
+  <li>
+    <p>The mean and variance of the Beta distribution:
+\(\begin{align}
+\mathbb{E}[\mu]&amp;=\frac{a}{a+b}\tag{12}\\
+\text{var}[\mu]&amp;=\frac{ab}{(a+b)^2(a+b+1)}\tag{13}
+\end{align}\)</p>
+  </li>
+  <li>
+    <p>The parameters $a$ and $b$ are called <em>hyperparameters</em> because they control the distribution of the $\mu$.</p>
+
+    <p>
+    <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/96519022_1095128907519804_1659392788409614336_n.png?_nc_cat=105&amp;_nc_sid=b96e70&amp;_nc_ohc=JRAhapmtZKEAX8__Qv5&amp;_nc_ht=scontent.fhan2-1.fna&amp;oh=27696461b7468a6b837da6b11160f353&amp;oe=5ED4533A" />
+    <center>Figure 1</center>
+</p>
+  </li>
+  <li>
+    <p>The posterior distribution of $\mu$ is now obtained by multiplying the beta prior $(10)$ by the binomial likelihood function $(5)$ and normalizing. Keep only the factors that depends on $\mu$, we have:
+\(p(\mu|m,l,a,b)\propto\mu^{m+a-1}(1-\mu)^{l+b-1}\tag{14}\)
+where $l=N-m$ corresponds the number of ‘tails’. Formula $(14)$ could normalize like a other beta distribution:
+\(p(\mu|m,l,a,b)=\frac{\Gamma(m+a+l+b)}{\Gamma(m+a)\Gamma(l+b)}\mu^{m+a-1}(1-\mu)^{l+b-1}\tag{15}\)</p>
+
+    <p>
+    <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.15752-9/96075982_2703000353358599_3750605630323294208_n.png?_nc_cat=105&amp;_nc_sid=b96e70&amp;_nc_ohc=jDz1WrcbpMIAX_LbFU5&amp;_nc_ht=scontent.fhan2-1.fna&amp;oh=5956716b84d0309612446a9ecd30e512&amp;oe=5ED6A6E6" />
+    <center>Figure 2</center>
+</p>
+  </li>
+  <li>
+    <p>If we have a observes data set $\mathcal{D}$, using $(12)$ we obtain:
+\(\mathbb{E}[\mu]=p(x=1|\mathcal{D})=\frac{m+a}{m+a+l+b}\tag{16}\)
+If $l,m\to\infty$, the result $(16)$ is approach to the maximum likelihood result $(9)$.</p>
+  </li>
+  <li>
+    <p>In Figure 1, we see that as the number of observations increases, the posterior distribution becomes more sharply, because in formula $(13)$, when $a\to\infty$ or $b\to\infty$, the variance goes to zero. In other word, we observe more and more data, the uncertainty represented by the posterior distribution will decrease. To address this, we take a frequentist  view, inference problem for parameter $\theta$ for which we have observed a data set $\mathcal{D}$, described by the joint distribution $p(\theta, \mathcal{D})$:
+\(\mathbb{E}_\theta[\theta]=\mathbb{E}_\mathcal{D}[\mathbb{E}_\theta[\theta|\mathcal{D}]]\tag{17}\)
+where
+\(\begin{align}
+\mathbb{E}_\theta[\theta]&amp;=\int p(\theta)\theta\text{d}\theta\tag{18}\\
+\mathbb{E}_\mathcal{D}[\mathbb{E}_\theta[\theta|\mathcal{D}]]&amp;=\int[\int p(\theta|\mathcal{D})\theta\text{d}\theta\ ] \ p(\mathcal{D})\text{d}\mathcal{D}\tag{19}\\
+\end{align}\)</p>
+  </li>
+  <li>
+    <p>This result says that the posterior mean of $\theta$, averaged over the distribution generating the data is equal to the prior mean of $\theta$.</p>
+  </li>
+  <li>
+    <p>And we can show that:
+\(\mathbb{var}_\theta[\theta]=\mathbb{E}_\mathcal{D}[\mathbb{var}_\theta[\theta|\mathcal{D}]]+\mathbb{var}_\mathcal{D}[\mathbb{E}_\theta[\theta|\mathcal{D}]]\)</p>
+  </li>
+</ul>
+
+<h6 id="reference"><strong>Reference:</strong></h6>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>2.1</td>
+          <td>Pattern Recognition and Machine Learning</td>
+          <td>C.M.Bishop.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+</div>
+</div>
+
+    </main>
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <img src="/assets/res/logo.png" alt="logo"/>
+            <p class="grey-text text-lighten-4">Science Blog!
+</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          &#xA9; 2020 Khoa Blog. All rights reserved. Powered by <a href="https://github.com/khoablog/khoablog.github.io">Khoa</a>.
+        </div>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})
+      (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-96359860-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

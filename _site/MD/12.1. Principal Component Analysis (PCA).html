@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+      Khoa Blog
+      
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/page.css">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="alternate" title="Beta" href="http://khoablogs.github.io">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Khoa Blog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Science Blog!" />
+<meta property="og:description" content="Science Blog!" />
+<link rel="canonical" href="http://localhost:4000/MD/12.1.%20Principal%20Component%20Analysis%20(PCA)" />
+<meta property="og:url" content="http://localhost:4000/MD/12.1.%20Principal%20Component%20Analysis%20(PCA)" />
+<meta property="og:site_name" content="Khoa Blog" />
+<meta name="google-site-verification" content="UA-96359860-1" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/MD/12.1.%20Principal%20Component%20Analysis%20(PCA)","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>
+      <nav class="top-nav teal">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a class="page-title" href="/">Khoa Blog</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <ul id="slide-out" class="side-nav fixed">
+        <li>
+          <div class="userView">
+            <div class="background"></div>
+            <a href="https://github.com/khoatranrb" target="_blank"><img class="circle z-depth-2" src="/assets/res/user.png"></a>
+            <span class="white-text name">Khoa Tran</span>
+            <span class="white-text email">khoatranrb@gmail.com</span>
+          </div>
+        </li>
+        <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
+        <li><a class="waves-effect" href="/projects"><i class="material-icons">description</i>Projects</a></li>
+        <li><a class="waves-effect" href="/categories"><i class="material-icons">sort</i>Categories</a></li>
+        <li><a class="waves-effect" href="/tags"><i class="material-icons">label</i>Tags</a></li>
+        <li><a class="waves-effect" href="http://khoablogs.github.io" target="_blank"><i class="material-icons">rss_feed</i>Beta</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="/about"><i class="material-icons">person</i>About</a></li>
+        <li><a class="waves-effect" href="/contact"><i class="material-icons">email</i>Contact</a></li>
+      </ul>
+    </header>
+    <main>
+
+<div class="container">
+  <div id="page-info">
+  <h3></h3>
+</div>
+<div class="row">
+  <h5 id="121-principal-component-analysis-pca"><strong>12.1. Principal Component Analysis (PCA)</strong></h5>
+
+<ul>
+  <li><strong>PCA</strong> is a technique is widely used for: dimensionality reduction, lossy data compression, feature extraction and data visualization.</li>
+</ul>
+
+<h6 id="1211-maximum-variance-formulation"><strong>12.1.1. Maximum variance formulation</strong></h6>
+
+<ul>
+  <li>
+    <p>Consider a data set ${x_n}$ where $n=1,…,N$ and $x_n$ is a $D$-dimensional Euclidean variable. Our goal is to project the data onto a space having dimensionality $M&lt;D$ while maximizing the variance of the projected data. We assume $M$ is given. Our task is determine an suitable of $M$ from data.</p>
+  </li>
+  <li>
+    <p>To begin with, consider the projection onto a one-dimension space ($M=1$). We define $D$-dimensional vector $u_1$, which $u_1^Tu_1=1$. Each data point $x_n$ is then projected onto a scalar value $u_1^Tx_n$.</p>
+  </li>
+  <li>
+    <p>The mean of projected data is $u_1^T\overline{x}$ where $\overline{x}$ is mean of sample data set:
+\(\overline{x}=\frac{1}{N}\sum_{n=1}^Nx_n \tag1\)
+and the variance of projected data is given by:
+\(\frac{1}{N}\sum_{n=1}^N\{u_1^Tx_n-u_1^T\overline{x}\}^2=u_1^TCu_1\tag2\)
+where $C$ is sample data covariance matrix:
+\(C=\frac{1}{N}\sum_{n=1}^N(x_n-\overline{x})(x_n-\overline{x})^T\tag3\)</p>
+  </li>
+  <li>
+    <p>Now we maximize $u_1^TCu_1$ with respect to $u_1$. That could make $||u_1||\to\infty$. However, as we mentioned, we define $u_1^Tu_1=1$. To enforce this constraint, we use Lagrange multiplier method, then we make an unconstrained maximization of:
+\(f(u_1)=u_1^TCu_1+\lambda_1(1-u_1^Tu_1)\tag4\)
+Now we set derivative $f(x)$ with respect $u_1$ equal to zero:
+\(Cu_1=\lambda_1 u_1\tag5\)
+It means $u_1$ must be an eigenvector of $C$ and $\lambda_ 1$ is a eigenvalue of $C$.</p>
+
+    <p>We have $(5)\iff u_1^TCu_1=\lambda_1 \ \ (6)$ (because $u_1^Tu_1=1$). We want to maximize $u_1^TCu_1$, so $\lambda_1$ must be the largest eigenvalue of $C$.</p>
+  </li>
+  <li>
+    <p>If we consider the general case of an $M$-dimensional projection space, the optimal linear projection for which the variance of the projection data is maximized is now define by $M$ eigenvectors $u_1,…,u_M$ of $C$ corresponding to the $M$ largest eigenvalues $\lambda_1,…,\lambda_M$.</p>
+  </li>
+</ul>
+
+<h5 id="reference"><strong>Reference:</strong></h5>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Mục 12.1.1</td>
+          <td>Pattern Recognition and Machine Learning</td>
+          <td>C.M.Bishop.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+</div>
+</div>
+
+    </main>
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <img src="/assets/res/logo.png" alt="logo"/>
+            <p class="grey-text text-lighten-4">Science Blog!
+</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          &#xA9; 2020 Khoa Blog. All rights reserved. Powered by <a href="https://github.com/khoablog/khoablog.github.io">Khoa</a>.
+        </div>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})
+      (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-96359860-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
