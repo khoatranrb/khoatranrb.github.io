@@ -1,1 +1,1 @@
-#### Visit my blog at <a href='khoatranrb.github.io'>khoatranrb.github.io</a>.
+#### Visit my blog at <a href='http://khoatranrb.github.io'>khoatranrb.github.io</a>.
