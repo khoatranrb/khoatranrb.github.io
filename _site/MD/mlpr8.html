@@ -76,9 +76,7 @@
   <h3></h3>
 </div>
 <div class="row">
-  <h5 id="conditional-gaussian-distribution"><strong>Conditional Gaussian distribution</strong></h5>
-
-<ul>
+  <ul>
   <li>
     <p>Consider two sets of variables are jointly Gaussian, then, the conditional distribution of one set conditioned on the other is again Gaussian.</p>
   </li>
@@ -163,9 +161,9 @@ we can obtain:
 \(\begin{pmatrix}
 \mathbf{A}&amp;\mathbf{B}\\\mathbf{C}&amp;\mathbf{D}
 \end{pmatrix}^{-1}=\begin{pmatrix}
-\mathbf{M}&amp;-\mathbf{MBD}^{-1}\\-\mathbf{D}^{-1}\mathbf{CM}&amp;-\mathbf{D}^{-1}+\mathbf{D}^{-1}\mathbf{CMBD}^{-1}
+\mathbf{M}&amp;-\mathbf{MBD}^{-1}\\-\mathbf{D}^{-1}\mathbf{CM}&amp;\mathbf{D}^{-1}+\mathbf{D}^{-1}\mathbf{CMBD}^{-1}
 \end{pmatrix}\tag{16}\)
-where $\mathbf{M}$ is the <em>Schur complement</em> $(\text{Appendix2})$ of $\mathbf{D}$ and $\mathbf{M}^{-1}$ is the <em>Schur complement</em>  of $\mathbf{A}$, defined as:
+where $\mathbf{M}$ is the <em>Schur complement</em> $(\text{Appendix2})$ of $\mathbf{D}$ and $\mathbf{M}^{-1}$ is the <em>Schur complement</em> of $\mathbf{A}$, defined as:
 \(\mathbf{M}=(\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})^{-1}\tag{17}.\)</p>
   </li>
   <li>
@@ -180,10 +178,99 @@ So:
 \(\begin{align}
 \mathbf{\Lambda}_{aa}&amp;=(\mathbf{\Sigma}_{aa}-\mathbf{\Sigma}_{ab}\mathbf{\Sigma}_{bb}^{-1}\mathbf{\Sigma}_{ba})^{-1}\tag{19}\\
 \mathbf{\Lambda}_{ab}&amp;=-(\mathbf{\Sigma}_{aa}-\mathbf{\Sigma}_{ab}\mathbf{\Sigma}_{bb}^{-1}\mathbf{\Sigma}_{ba})^{-1}\mathbf{\Sigma}_{ab}\mathbf{\Sigma}_{bb}^{-1}\tag{20}
-\end{align}\)</p>
+\end{align}.\)</p>
   </li>
 </ul>
 
+<h4 id="appendix"><strong>Appendix:</strong></h4>
+
+<ol>
+  <li>
+    <p>The inverse of a symmetric matrix also symmetric.</p>
+
+    <p><strong>Proof:</strong></p>
+
+    <ul>
+      <li>
+        <p>Given the inversible and symmetry matrix $A$:
+\(\mathbf{A}=\mathbf{A}^\top\tag{21}\)
+, we will prove:
+\(\mathbf{A}^{-1}=(\mathbf{A}^{-1})^\top\tag{22}.\)</p>
+      </li>
+      <li>
+        <p>First, we have:
+\(\mathbf{AA}^{-1}=\mathbf{I}\tag{23}.\)
+From $(21)$, we obtain:
+\(\mathbf{A}^\top\mathbf{A}^{-1}=\mathbf{I}\tag{24}.\)
+Then, use two properties $\mathbf{I}=\mathbf{I}^\top$ and $(\mathbf{A}\mathbf{B})^\top=\mathbf{B}^\top\mathbf{A}^\top$:
+\((\mathbf{A}^{-1})^\top \mathbf{A}=\mathbf{I}\tag{25}.\)
+Finally, we put $\mathbf{A}^{-1}$ into right side of both:
+\(\begin{align}
+(\mathbf{A}^{-1})^\top \mathbf{A}\mathbf{A}^{-1}&amp;=\mathbf{I}\mathbf{A}^{-1}\tag{26}\\
+(\mathbf{A}^{-1})^\top=\mathbf{A}^{-1}\tag{27}
+\end{align}\)
+and we are done.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>In order to prove formula $(16)$, we consider the follow equation:
+\(\begin{pmatrix}
+\mathbf{A}&amp;\mathbf{B}\\\mathbf{C}&amp;\mathbf{D}
+\end{pmatrix}
+\begin{pmatrix}\mathbf{x}\\\mathbf{y}\end{pmatrix}=\begin{pmatrix}\mathbf{e}\\\mathbf{f}\end{pmatrix}\tag{28}.\)
+It equivalent to:
+\(\begin{cases}
+\mathbf{Ax}+\mathbf{By}=\mathbf{e} \ \ \ (a)\\
+\mathbf{Cx}+\mathbf{Dy}=\mathbf{f} \ \ \ (b)
+\end{cases}\tag{29}.\)
+From the under equation of the formula $(29)$, we obtain:
+\(\mathbf{y}=\mathbf{D}^{-1}(\mathbf{f}-\mathbf{Cx})\tag{30}.\)
+Replace the $(30)$ into the $(29.a)$, we have:
+\(\begin{align}
+ \mathbf{Ax}+\mathbf{BD}^{-1}(\mathbf{f-Cx})&amp;=\mathbf{e}\tag{31}\\
+ \Leftrightarrow\ \ \ \ \ \ \ \ \ (\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})\mathbf{x}&amp;=\mathbf{e}-\mathbf{BD}^{-1}\mathbf{f}\tag{32}\\
+  \Leftrightarrow\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mathbf{x}&amp;=(\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})^{-1}(\mathbf{e}-\mathbf{BD}^{-1}\mathbf{f})\tag{33}\\
+    \Leftrightarrow\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mathbf{x}&amp;=\mathbf{Me}-\mathbf{MBD}^{-1}\mathbf{f}\tag{34}
+\end{align}\)
+where $\mathbf{M}=(\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})^{-1}$.</p>
+
+    <p>Replace the $(34)$ into the $(30)$, we calculate the $\mathbf{y}$:
+\(\begin{align}
+\mathbf{y}&amp;=\mathbf{D}^{-1}[\mathbf{f}-\mathbf{C}(\mathbf{Me}-\mathbf{MBD}^{-1}\mathbf{f})]\tag{35}\\
+&amp;=-\mathbf{D}^{-1}\mathbf{CMe}+(\mathbf{D}^{-1}+\mathbf{D}^{-1}\mathbf{MBD}^{-1})\mathbf{f}\tag{36}
+\end{align}.\)
+From the $(34)$ and the $(36)$, we have:
+\(\begin{pmatrix}
+\mathbf{x}\\\mathbf{y}
+\end{pmatrix}
+=\begin{pmatrix}
+\mathbf{M}&amp;-\mathbf{MBD}^{-1}\\-\mathbf{D}^{-1}\mathbf{CM}&amp;\mathbf{D}^{-1}+\mathbf{D}^{-1}\mathbf{CMBD}^{-1}
+\end{pmatrix}\begin{pmatrix}\mathbf{e}\\\mathbf{f}\end{pmatrix}\tag{37}.\)
+As mentioned at $(28)$, we also have:
+\(\begin{pmatrix}\mathbf{x}\\\mathbf{y}\end{pmatrix}=\begin{pmatrix}
+\mathbf{A}&amp;\mathbf{B}\\\mathbf{C}&amp;\mathbf{D}
+\end{pmatrix}^{-1}\begin{pmatrix}\mathbf{e}\\\mathbf{f}\end{pmatrix}\tag{38}.\)
+Then, we achieve the goal.</p>
+  </li>
+</ol>
+
+<h4 id="reference">Reference:</h4>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>2.3.1</td>
+          <td>Pattern Recognition and Machine Learning</td>
+          <td>C.M. Bishop.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><a href="https://www.cis.upenn.edu/~jean/schur-comp.pdf" style="color:green">The Schur Complement and Symmetric PositiveSemidefinite (and Definite) Matrices</a>.</li>
+</ul>
 
 </div>
 </div>
