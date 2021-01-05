@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       
-      Khoa Blog
+      Linear Regression in statistic view
       
     </title>
     <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
@@ -23,16 +23,16 @@
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Khoa Blog" />
+<meta property="og:title" content="Linear Regression in statistic view" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Science Blog!" />
 <meta property="og:description" content="Science Blog!" />
-<link rel="canonical" href="http://localhost:4000/MD/3.2.1.%20Agnostic%20PAC%20Learning" />
-<meta property="og:url" content="http://localhost:4000/MD/3.2.1.%20Agnostic%20PAC%20Learning" />
+<link rel="canonical" href="http://localhost:4000/MD/mlpr1x" />
+<meta property="og:url" content="http://localhost:4000/MD/mlpr1x" />
 <meta property="og:site_name" content="Khoa Blog" />
 <meta name="google-site-verification" content="UA-96359860-1" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/MD/3.2.1.%20Agnostic%20PAC%20Learning","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/MD/mlpr1x","headline":"Linear Regression in statistic view","description":"Science Blog!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -73,73 +73,39 @@
 
 <div class="container">
   <div id="page-info">
-  <h3></h3>
+  <h3>Linear Regression in statistic view</h3>
 </div>
 <div class="row">
-  <h5 id="321-agnostic-pac-learning"><strong>3.2.1. Agnostic PAC Learning</strong></h5>
+  <h1 id="linear-regression-in-statistic-view">Linear Regression in statistic view</h1>
 
 <ul>
   <li>
-    <p>In previous articles of <em>UML series</em>, we know that the realizability assumption requires that there exist $h^<em>\in H$ such that $P_{x\sim D}[h^</em>(x)=f(x)]=1$. In fact, labels don’t completely depend on the features. Then, we relax the realizability assumption by replacing the <em>“target labeling function”</em> with more flexible, a data-labels generating distribution.</p>
+    <p>In this post, we discuss about Linear Regression in statistic view, thereby answer why we should use Mean Square Error as a loss function.</p>
   </li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>We redefine $\mathcal{D}$ be a probability distribution over $\mathcal{X}\times\mathcal{Y}$. So, $\mathcal{D}$ includes two parts: a distribution $\mathcal{D_x}$ <em>(marginal distribution)</em> and $\mathcal{D((x,y)</td>
-          <td>x)}$ <em>(conditional probability)</em>.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>We suppose that target variable $t$ is given by a deterministic function $y(\mathbf{x},\mathbf{w})$ with additive Gaussian noise $\epsilon$:
+\(t=y(\mathbf{x},\mathbf{w})+\epsilon\)
+where $\epsilon$ is a zero mean Gaussian random variable with precision $\beta$. We can write:
+\(p(t|\mathbf{x},\mathbf{w},\beta)=\mathcal{N}(t|y(\mathbf{x},\mathbf{w}),\beta^{-1})\)</p>
   </li>
   <li>
-    <p><strong><em>True Error Revised</em></strong>:
-\(L_{\mathcal{D}}(h)=P_{(x,y)\sim\mathcal{D}}[h(x)\neq y]=\mathcal{D}(\{(x,y):h(x)\neq y\})\)</p>
+    <p>Now consider a data set of inputs $\mathbf{X}={\mathbf{x}_1,…,\mathbf{x}_N}$ with corresponding target values $t_1,…t_N$. We have:
+\(p(\mathbf{t}|\mathbf{X},\mathbf{w},\beta)=\prod_{n=1}^N\mathcal{N}(t_n|\mathbf{w}^\top\phi(\mathbf{x}_n),\beta^{-1})\)
+where $\phi(\mathbf{x})$ is a basis function of $\mathbf{x}$, but in this post, we don’t discuss about it.</p>
   </li>
   <li>
-    <p><strong><em>Goal</em></strong>: We wish to find some hypothesis $h:\mathcal{X\to Y}$ that minimizes $L_{\mathcal{D}}(h)$.</p>
-  </li>
-  <li>
-    <p><strong><em>The Bayes Optimal Predictor</em></strong>:</p>
-
-    <ul>
-      <li>Given $\mathcal{D}$ over $\mathcal{X}\times {0,1}$, the best labeling function is:
-\(f_{\mathcal{D}}(x)=\begin{cases}
-1 \ \ \ \text{if $P[y=1|x]\ge0.5$}\\
-0 \ \ \ \text{otherwise}
-\end{cases}\)</li>
-    </ul>
-
-    <p>We can show that $f_{\mathcal{D}}$ is optimal, means with every $g:\mathcal{X}\to{0,1}$, $L_{\mathcal{D}}(f_{\mathcal{D}})\le L_{\mathcal{D}}(g)$.</p>
-
-    <p><em>Prove:</em> With every $h:\mathcal{X\to Y}$:
+    <p>We wish to maximize $p(\mathbf{t}|\mathbf{X},\mathbf{w},\beta)$, synonymous with maximize $\ln p(t|\mathbf{X},\mathbf{w},\beta)$:
 \(\begin{align}
-L_{\mathcal{D}}(h)&amp;=P_{(x,y)\sim\mathcal{D}}[h(x)\neq y]\\
-&amp;=E_{(x,y)\sim\mathcal{D}}\begin{cases}
-\Pr[y\ne0|x] \ \ \ \text{if $h(x)=0$} \\
-\Pr[y\ne1|x] \ \ \ \text{if $h(x)=1$}
-\end{cases}
+\ln p(t|\mathbf{X},\mathbf{w},\beta)&amp;=\sum_{n=1}^N\ln\mathcal{N}(t_n|\mathbf{w}^\top\phi(\mathbf{x}_n),\beta^{-1})\\
+&amp;=\sum_{n=1}^N\ln\frac{1}{\sqrt{2\pi\beta^{-1}}}\exp({-\frac{(t_n-\mathbf{w}^\top\phi(\mathbf{x}_n))^2}{2\beta^{-1}}})\\
+&amp;=N\ln\frac{1}{\sqrt{2\pi\beta^{-1}}}-\beta E_D(\mathbf{w})
 \end{align}\)
-Suppose we have $\Pr[y=1|x_i]$, so we also have $\Pr[y=0|x_i]=1-\Pr[y=1|x_i]$. If we choose $h(x_i)=1$, $L_{\mathcal{D}}(h,x_i)=\Pr[y=0|x_i]=1-\Pr[y=1|x_i]$. And if we choose $h(x_i)=0$, $L_{\mathcal{D}}(h,x_i)=\Pr[y=1|x_i]$.</p>
+where
+\(E_D(\mathbf{w})=\frac{1}{2}\sum_{n=1}^N(t_n-\mathbf{w}^\top\phi(\mathbf{x}_n))^2\)</p>
 
-    <table>
-      <tbody>
-        <tr>
-          <td>We want $L_{\mathcal{D}}$ to be as small as possible. So if $\Pr[y=1</td>
-          <td>x_i]\ge1-\Pr[y=0</td>
-          <td>x_i]$, we choose $h(x_i)=1$. Similarly with opposite case, we can prove $f_{\mathcal{D}}$ is optimal.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <p><strong><em>Agnostic PAC Learning</em></strong>: A hypothesis $\mathcal{H}$ is agnostic PAC learnable if exist $m_{\mathcal{H}}(\epsilon, \delta):(0,1)^2\to\N$ with property:</p>
+    <p>we must minimize $E_D(\mathbf{w})$ - the MSE loss.</p>
 
-    <ul>
-      <li>For every $\epsilon, \delta\in(0,1)$, every distribution $\mathcal{D}$ over $\mathcal{X\times Y}$, when running algorithm on $m\ge m_\mathcal{H}(\epsilon, \delta)$ generated by $\mathcal{D}$, the algorithm returns a hypothesis $h$ such that, with probability of at least $1-\delta$:
-\(L_{\mathcal{D}}(h)\le\min_{h'\in\mathcal{H}}L_{\mathcal{D}}(h')+\epsilon\)
-If the realizability assumption holds, agnostic PAC learning generalizes the definition of PAC learning. If not, agnostic PAC learning can still guarantee success if its error is not much larger than the best error. It contrast to PAC learning, in which the learner is requires to achieve a small error and not relative to the best error.</li>
-    </ul>
+    <p>And we are done!</p>
   </li>
 </ul>
 
