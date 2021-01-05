@@ -41,7 +41,7 @@
   
   **Note that:** $\mathbf{\Lambda}_{aa}$ is not the invert of $\mathbf{\Sigma}_{aa}$, similar to $\mathbf{\Lambda}_{bb}$. We will discuss about it later.
 
-* Now we discuss about the conditional distribution $p(\mathbf{x}_a|\mathbf{x}_b)$, consider $\mathbf{x}_b$ is the observed value. We start form the joint distribution $p(\mathbf{x})=p(\mathbf{x}_a,\mathbf{x}_b)$. To explore it, we consider the quadratic form of Gaussian distribution (as mentioned in) combine with the partitioning $(3)$ and $(5)$:
+* Now we discuss about the conditional distribution $p(\mathbf{x}_a|\mathbf{x}_b)$, consider $\mathbf{x}_b$ is the observed value. We start form the joint distribution $p(\mathbf{x})=p(\mathbf{x}_a,\mathbf{x}_b)$. To explore it, we consider the quadratic form of Gaussian distribution (as mentioned in <a href='https://khoatranrb.github.io/2020/11/30/ml&pr-8' style='color:green'>MLPR8</a>) combine with the partitioning $(3)$ and $(5)$:
   $$
   \begin{align}
   -\frac{1}{2}(\mathbf{x-\mu})^\top\mathbf{\Sigma}^{-1}(\mathbf{x}-\mu)&=-\frac{1}{2}(\mathbf{x}_a-\mu_a)^\top\mathbf{\Lambda}_{aa}(\mathbf{x}_a-\mu_a)\\

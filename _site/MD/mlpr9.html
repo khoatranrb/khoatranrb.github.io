@@ -27,12 +27,12 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Science Blog!" />
 <meta property="og:description" content="Science Blog!" />
-<link rel="canonical" href="http://localhost:4000/MD/3.2.1.%20Agnostic%20PAC%20Learning" />
-<meta property="og:url" content="http://localhost:4000/MD/3.2.1.%20Agnostic%20PAC%20Learning" />
+<link rel="canonical" href="http://localhost:4000/MD/mlpr9" />
+<meta property="og:url" content="http://localhost:4000/MD/mlpr9" />
 <meta property="og:site_name" content="Khoa Blog" />
 <meta name="google-site-verification" content="UA-96359860-1" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/MD/3.2.1.%20Agnostic%20PAC%20Learning","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/MD/mlpr9","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -76,70 +76,58 @@
   <h3></h3>
 </div>
 <div class="row">
-  <h5 id="321-agnostic-pac-learning"><strong>3.2.1. Agnostic PAC Learning</strong></h5>
+  <ul>
+  <li>
+    <p>In this post, we discuss about <strong>Bayes’ theorem</strong> for Gaussian variables. With
+\(\mathbf{x}=
+\begin{pmatrix}
+\mathbf{x}_a\\\mathbf{x}_b\tag1
+\end{pmatrix},\)
+given $p(\mathbf{x}_a)$ and a Gaussian conditional distribution $p(\mathbf{x}_b|\mathbf{x}_a)$, we wish to find $p(\mathbf{x}_a,\mathbf{x}_b)=p(\mathbf{x})$. As show in <a href="https://khoatranrb.github.io/2020/11/30/ml&amp;pr-8" style="color:green">MLPR8</a>, $p(\mathbf{x}_b|\mathbf{x}_a)$ has mean is a linear function of $\mathbf{x}_a$:
+\(\begin{align}
+p(\mathbf{x}_a)&amp;=\mathcal{N}(\mathbf{x}_a\mathbf{|\mu,\Lambda}^{-1})\tag2\\
+p(\mathbf{x}_b\mathbf{|x}_a)&amp;=\mathcal{N}(\mathbf{x}_b\mathbf{|Ax}_a+\mathbf{b,L}^{-1})\tag3.
+\end{align}.\)</p>
+  </li>
+  <li>
+    <p>We consider the joint distribution:
+\(p(\mathbf{x})=p(\mathbf{x}_a)p(\mathbf{x}_b\mathbf{|x}_a)\tag4.\)
+Take the log, we obtain:
+\(\begin{align}
+\ln p(\mathbf{x})&amp;=\ln p(\mathbf{x}_a)+p(\mathbf{x}_b\mathbf{|x}_a)\\
+&amp;=-\frac{1}{2}(\mathbf{x}_a-\mu)^\top\mathbf{\Lambda}(\mathbf{x}_a-\mu)-\frac{1}{2}(\mathbf{x}_b-\mathbf{Ax}_a-\mathbf{b})^\top\mathbf{L}(\mathbf{x}_b-\mathbf{Ax}_a-\mathbf{b})+\text{const}\tag5.
+\end{align}\)</p>
+  </li>
+  <li>
+    <p>In order to find covariance matrix of $p(\mathbf{x})$, we rewrite the $(5)$ as a quadratic function:
+\(\begin{align}
+&amp;-\frac{1}{2}(\mathbf{x}_a-\mu)^\top\mathbf{\Lambda}(\mathbf{x}_a-\mu)-\frac{1}{2}(\mathbf{x}_b-\mathbf{Ax}_a-\mathbf{b})^\top\mathbf{L}(\mathbf{x}_b-\mathbf{Ax}_a-\mathbf{b})\\
+&amp;=-\frac{1}{2}\mathbf{x}_a^\top\mathbf{\Lambda x}_a-\frac{1}{2}\mathbf{x}_b^\top \mathbf{Lx}_b-\frac{1}{2}\mathbf{x}_a^\top \mathbf{A^\top LAx}_a+\frac{1}{2}\mathbf{x}_b^\top \mathbf{LAx}_a+\frac{1}{2}\mathbf{x}_a^\top\mathbf{A^\top Lx}_b+\text{const}\tag6\\
+&amp;=-\frac{1}{2}\mathbf{x}_a^\top\mathbf{(\Lambda+A^\top LA) x}_a-\frac{1}{2}\mathbf{x}_b^\top \mathbf{Lx}_b+\frac{1}{2}\mathbf{x}_b^\top\mathbf{ LAx}_a+\frac{1}{2}\mathbf{x}_a^\top\mathbf{A^\top Ly}+\text{const}\tag7\\
+&amp;=-\frac{1}{2}\begin{pmatrix}\mathbf{x\\y}\end{pmatrix}^\top\begin{pmatrix}\mathbf{\Lambda}+\mathbf{A^\top LA}&amp;-\mathbf{A^\top L}\\-\mathbf{LA}&amp;\mathbf{L}\end{pmatrix}\begin{pmatrix}\mathbf{x\\y}\end{pmatrix}\tag9.
+\end{align}\)</p>
+  </li>
+  <li>
+    <p>Finally, we get:
+\(\begin{align}
+\mathbf{E}[\mathbf{x}]&amp;=\begin{pmatrix}\mu\\ \mathbf{A\mu+b}\end{pmatrix}\tag{10}\\
+\text{cov}[\mathbf{x}]&amp;=\begin{pmatrix}\mathbf{\Lambda}+\mathbf{A^\top LA}&amp;-\mathbf{A^\top L}\\-\mathbf{LA}&amp;\mathbf{L}\end{pmatrix}^{-1}\tag{11}.
+\end{align}\)</p>
+  </li>
+</ul>
+
+<h4 id="reference">Reference:</h4>
 
 <ul>
   <li>
-    <p>In previous articles of <em>UML series</em>, we know that the realizability assumption requires that there exist $h^<em>\in H$ such that $P_{x\sim D}[h^</em>(x)=f(x)]=1$. In fact, labels don’t completely depend on the features. Then, we relax the realizability assumption by replacing the <em>“target labeling function”</em> with more flexible, a data-labels generating distribution.</p>
-  </li>
-  <li>
     <table>
       <tbody>
         <tr>
-          <td>We redefine $\mathcal{D}$ be a probability distribution over $\mathcal{X}\times\mathcal{Y}$. So, $\mathcal{D}$ includes two parts: a distribution $\mathcal{D_x}$ <em>(marginal distribution)</em> and $\mathcal{D((x,y)</td>
-          <td>x)}$ <em>(conditional probability)</em>.</td>
+          <td>Pattern Recognition and Machine Learning</td>
+          <td>C.M. Bishop.</td>
         </tr>
       </tbody>
     </table>
-  </li>
-  <li>
-    <p><strong><em>True Error Revised</em></strong>:
-\(L_{\mathcal{D}}(h)=P_{(x,y)\sim\mathcal{D}}[h(x)\neq y]=\mathcal{D}(\{(x,y):h(x)\neq y\})\)</p>
-  </li>
-  <li>
-    <p><strong><em>Goal</em></strong>: We wish to find some hypothesis $h:\mathcal{X\to Y}$ that minimizes $L_{\mathcal{D}}(h)$.</p>
-  </li>
-  <li>
-    <p><strong><em>The Bayes Optimal Predictor</em></strong>:</p>
-
-    <ul>
-      <li>Given $\mathcal{D}$ over $\mathcal{X}\times {0,1}$, the best labeling function is:
-\(f_{\mathcal{D}}(x)=\begin{cases}
-1 \ \ \ \text{if $P[y=1|x]\ge0.5$}\\
-0 \ \ \ \text{otherwise}
-\end{cases}\)</li>
-    </ul>
-
-    <p>We can show that $f_{\mathcal{D}}$ is optimal, means with every $g:\mathcal{X}\to{0,1}$, $L_{\mathcal{D}}(f_{\mathcal{D}})\le L_{\mathcal{D}}(g)$.</p>
-
-    <p><em>Prove:</em> With every $h:\mathcal{X\to Y}$:
-\(\begin{align}
-L_{\mathcal{D}}(h)&amp;=P_{(x,y)\sim\mathcal{D}}[h(x)\neq y]\\
-&amp;=E_{(x,y)\sim\mathcal{D}}\begin{cases}
-\Pr[y\ne0|x] \ \ \ \text{if $h(x)=0$} \\
-\Pr[y\ne1|x] \ \ \ \text{if $h(x)=1$}
-\end{cases}
-\end{align}\)
-Suppose we have $\Pr[y=1|x_i]$, so we also have $\Pr[y=0|x_i]=1-\Pr[y=1|x_i]$. If we choose $h(x_i)=1$, $L_{\mathcal{D}}(h,x_i)=\Pr[y=0|x_i]=1-\Pr[y=1|x_i]$. And if we choose $h(x_i)=0$, $L_{\mathcal{D}}(h,x_i)=\Pr[y=1|x_i]$.</p>
-
-    <table>
-      <tbody>
-        <tr>
-          <td>We want $L_{\mathcal{D}}$ to be as small as possible. So if $\Pr[y=1</td>
-          <td>x_i]\ge1-\Pr[y=0</td>
-          <td>x_i]$, we choose $h(x_i)=1$. Similarly with opposite case, we can prove $f_{\mathcal{D}}$ is optimal.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <p><strong><em>Agnostic PAC Learning</em></strong>: A hypothesis $\mathcal{H}$ is agnostic PAC learnable if exist $m_{\mathcal{H}}(\epsilon, \delta):(0,1)^2\to\N$ with property:</p>
-
-    <ul>
-      <li>For every $\epsilon, \delta\in(0,1)$, every distribution $\mathcal{D}$ over $\mathcal{X\times Y}$, when running algorithm on $m\ge m_\mathcal{H}(\epsilon, \delta)$ generated by $\mathcal{D}$, the algorithm returns a hypothesis $h$ such that, with probability of at least $1-\delta$:
-\(L_{\mathcal{D}}(h)\le\min_{h'\in\mathcal{H}}L_{\mathcal{D}}(h')+\epsilon\)
-If the realizability assumption holds, agnostic PAC learning generalizes the definition of PAC learning. If not, agnostic PAC learning can still guarantee success if its error is not much larger than the best error. It contrast to PAC learning, in which the learner is requires to achieve a small error and not relative to the best error.</li>
-    </ul>
   </li>
 </ul>
 
