@@ -18,10 +18,6 @@
     
     
     
-    
-    <link rel="stylesheet" href="/assets/css/index.css">
-    
-    
     <link rel="stylesheet" href="/assets/css/syntax.css">
     <link rel="alternate" title="Beta" href="http://khoablogs.github.io">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -31,14 +27,12 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Science Blog!" />
 <meta property="og:description" content="Science Blog!" />
-<link rel="canonical" href="http://localhost:4000/page7/" />
-<meta property="og:url" content="http://localhost:4000/page7/" />
+<link rel="canonical" href="http://localhost:4000/MD/mlpr10" />
+<meta property="og:url" content="http://localhost:4000/MD/mlpr10" />
 <meta property="og:site_name" content="Khoa Blog" />
-<link rel="prev" href="http://localhost:4000/page6" />
-<link rel="next" href="http://localhost:4000/page8" />
 <meta name="google-site-verification" content="UA-96359860-1" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/page7/","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/MD/mlpr10","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -82,163 +76,51 @@
   <h3></h3>
 </div>
 <div class="row">
-  <div class="row">
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">DSA_5: Sắp xếp hòa trộn | Merge sort.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          19/02/2020 15:34
-        </p>
-        <p id="post-content"><h5 id="1-thuật-toán"><strong>1. Thuật toán:</strong></h5>
+  <ul>
+  <li>
+    <p>In this post, we discuss about Linear Regression in statistic view, thereby answer why we should use Mean Square Error as a loss function.</p>
+  </li>
+  <li>
+    <p>We suppose that target variable $t$ is given by a deterministic function $y(\mathbf{x},\mathbf{w})$ with additive Gaussian noise $\epsilon$:
+\(t=y(\mathbf{x},\mathbf{w})+\epsilon\tag1\)
+where $\epsilon$ is a zero mean Gaussian random variable with precision $\beta$. We can write:
+\(p(t|\mathbf{x},\mathbf{w},\beta)=\mathcal{N}(t|y(\mathbf{x},\mathbf{w}),\beta^{-1})\tag2.\)</p>
+  </li>
+  <li>
+    <p>Now consider a data set of inputs $\mathbf{X}={\mathbf{x}_1,…,\mathbf{x}_N}$ with corresponding target values $t_1,…t_N$. We have:
+\(p(\mathbf{t}|\mathbf{X},\mathbf{w},\beta)=\prod_{n=1}^N\mathcal{N}(t_n|\mathbf{x}_n\mathbf{w},\beta^{-1})\tag3.\)</p>
+  </li>
+  <li>
+    <p>We wish to maximize $p(\mathbf{t}|\mathbf{X},\mathbf{w},\beta)$, synonymous with maximize $\ln p(t|\mathbf{X},\mathbf{w},\beta)$:
+\(\begin{align}
+\ln p(t|\mathbf{X},\mathbf{w},\beta)&amp;=\sum_{n=1}^N\ln\mathcal{N}(t_n|\mathbf{w}^\top\phi(\mathbf{x}_n),\beta^{-1})\tag4\\
+&amp;=\sum_{n=1}^N\ln\frac{1}{\sqrt{2\pi\beta^{-1}}}\exp({-\frac{(t_n-\mathbf{w}^\top\phi(\mathbf{x}_n))^2}{2\beta^{-1}}})\tag5\\
+&amp;=N\ln\frac{1}{\sqrt{2\pi\beta^{-1}}}-\beta E_D(\mathbf{w})\tag6
+\end{align}\)
+where
+\(E_D(\mathbf{w})=\frac{1}{2}\sum_{n=1}^N(t_n-\mathbf{w}^\top\phi(\mathbf{x}_n))^2,\tag7\)</p>
 
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/02/19/dsa-5">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">DSA_4: Sắp xếp nhanh | Quick sort.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          18/02/2020 15:33
-        </p>
-        <p id="post-content"><h5 id="1-thuật-toán"><strong>1. Thuật toán:</strong></h5>
+    <p>we must minimize $E_D(\mathbf{w})$ - the MSE loss.</p>
 
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/02/18/dsa-4">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">DSA_3: Sắp xếp chọn | Selection sort.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          17/02/2020 15:32
-        </p>
-        <p id="post-content"><h5 id="1-thuật-toán"><strong>1. Thuật toán:</strong></h5>
+    <p>And we are done!</p>
+  </li>
+</ul>
 
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/02/17/dsa-3">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">DSA_2: Sắp xếp chèn | Insertion sort.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          16/02/2020 15:31
-        </p>
-        <p id="post-content"><h5 id="1-thuật-toán"><strong>1. Thuật toán:</strong></h5>
+<h4 id="reference">Reference:</h4>
 
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/02/16/dsa-2">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">DSA_1: Sắp xếp nổi bọt | Bubble sort.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          15/02/2020 15:30
-        </p>
-        <p id="post-content"><h5 id="1-góc-nhìn"><strong>1. Góc nhìn:</strong></h5>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Pattern Recognition and Machine Learning</td>
+          <td>C.M. Bishop.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
 
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/02/15/dsa-1">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12 center-align">
-    <ul class="pagination">
-      <li class="waves-effect">
-        
-        
-        <a href="/page6">
-        
-        
-          <i class="material-icons">chevron_left</i>
-        </a>
-      </li>
-      
-      <li class="waves-effect">
-        <a href="/">1</a>
-      
-      </li>
-      
-      
-      <li class="waves-effect"><a href="/page2">2</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page3">3</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page4">4</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page5">5</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page6">6</a></li>
-      
-      
-      
-      <li class="active teal"><a href="#!">7</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page8">8</a></li>
-      
-      
-      <li class="waves-effect">
-        
-        <a href="/page8">
-        
-          <i class="material-icons">chevron_right</i>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
 </div>
 </div>
 
