@@ -141,6 +141,10 @@
 <lastmod>2021-01-05T23:02:23+07:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/2021/01/14/ml&amp;pr-10</loc>
+<lastmod>2021-01-14T23:03:23+07:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about</loc>
 </url>
 <url>
@@ -192,7 +196,7 @@
 <loc>http://localhost:4000/MD/bis</loc>
 </url>
 <url>
-<loc>http://localhost:4000/MD/mlpr1x</loc>
+<loc>http://localhost:4000/MD/mlpr10</loc>
 </url>
 <url>
 <loc>http://localhost:4000/MD/mlpr6_</loc>
@@ -226,5 +230,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page7/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page8/</loc>
 </url>
 </urlset>
