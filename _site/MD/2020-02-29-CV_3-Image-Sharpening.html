@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       
-      Welcome to Khoa Blog!
+      CV_3: Image Sharpening.
       
     </title>
     <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
@@ -23,20 +23,20 @@
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <!-- Begin Jekyll SEO tag v2.7.1 -->
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Welcome to Khoa Blog!" />
+<meta property="og:title" content="CV_3: Image Sharpening." />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="​ Welcome to Khoa Blog. My blog write about mathematics and computer science." />
-<meta property="og:description" content="​ Welcome to Khoa Blog. My blog write about mathematics and computer science." />
-<link rel="canonical" href="http://localhost:4000/2020/01/01/welcome-to-khoa-blog" />
-<meta property="og:url" content="http://localhost:4000/2020/01/01/welcome-to-khoa-blog" />
+<meta name="description" content="Science Blog!" />
+<meta property="og:description" content="Science Blog!" />
+<link rel="canonical" href="http://localhost:4000/MD/2020-02-29-CV_3-Image-Sharpening" />
+<meta property="og:url" content="http://localhost:4000/MD/2020-02-29-CV_3-Image-Sharpening" />
 <meta property="og:site_name" content="Khoa Blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-01-01T00:30:13+07:00" />
+<meta property="article:published_time" content="2020-02-29T15:12:13+07:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Welcome to Khoa Blog!" />
+<meta property="twitter:title" content="CV_3: Image Sharpening." />
 <meta name="google-site-verification" content="UA-96359860-1" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/2020/01/01/welcome-to-khoa-blog","headline":"Welcome to Khoa Blog!","dateModified":"2020-01-01T00:30:13+07:00","datePublished":"2020-01-01T00:30:13+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/01/01/welcome-to-khoa-blog"},"description":"​ Welcome to Khoa Blog. My blog write about mathematics and computer science.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/MD/2020-02-29-CV_3-Image-Sharpening","headline":"CV_3: Image Sharpening.","dateModified":"2020-02-29T15:12:13+07:00","datePublished":"2020-02-29T15:12:13+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/MD/2020-02-29-CV_3-Image-Sharpening"},"description":"Science Blog!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -77,13 +77,13 @@
 
 <div class="container">
   <div id="post-info">
-  <h3>Welcome to Khoa Blog!</h3>
+  <h3>CV_3: Image Sharpening.</h3>
   <ul class="collapsible hoverable" data-collapsible="accordion">
     <li>
       <div class="collapsible-header">
         <span>
           <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
-          01/01/2020 00:30
+          29/02/2020 15:12
           <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Show extra info">info</i>
         </span>
       </div>
@@ -93,7 +93,7 @@
           
           
           
-          <a href="/categories#intro_cap" target="_blank"><div class="chip">INTRO</div></a>
+          <a href="/categories#cv_cap" target="_blank"><div class="chip">CV</div></a>
           
         </span>
         <span>
@@ -101,7 +101,7 @@
           
           
           
-          <a href="/tags#intro" target="_blank"><div class="chip">intro</div></a>
+          <a href="/tags#cv-image-processing-sharpen" target="_blank"><div class="chip">cv image_processing sharpen</div></a>
           
         </span>
       </div>
@@ -111,11 +111,90 @@
 <div class="divider"></div>
 <div class="row">
   <div class="col s12">
-    <p>​	Welcome to <strong>Khoa Blog</strong>. My blog write about <strong>mathematics</strong> and <strong>computer science</strong>.</p>
+    <h4 id="1-introduction">1. Introduction</h4>
 
-<p><code class="language-plaintext highlighter-rouge">Read more, know more</code></p>
+<ul>
+  <li><em>Sharpending</em> highlights transition in intensity. This technical uses in electronic printing and medical imaging. As we know, smoothing filters make output image could be accomplished in the spatial domain by pixel averaging in a neighborhood, it make the range of edges pixels and around pixels smaller. It that mean derivative at that point decreases. Thus, image differentiation enhances edges, noise and de-emphasizes with slowly varying intensities.</li>
+</ul>
 
-<p><code class="language-plaintext highlighter-rouge">Write more, remember more</code></p>
+<h4 id="2-foundation">2. Foundation</h4>
+
+<ul>
+  <li>
+    <p>Next, we will discuss about <em>first-</em> and <em>second- derivatives</em>. There are various ways to define them. However, we require some properties in there:</p>
+
+    <ul>
+      <li><em>First-derivative</em>:
+        <ul>
+          <li>Must be zero in areas of constant intensity.</li>
+          <li>Must be non zero at onset of an intensity step or ramp.</li>
+          <li>Must be nonzero along intensity ramps.</li>
+        </ul>
+      </li>
+      <li><em>Second-derivative</em>:
+        <ul>
+          <li>Must be zero in areas of constant intensity.</li>
+          <li>Must be nonzero in the onset and end of an intensity step or ramp.</li>
+          <li>Must be zero along intensity ramps.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>According to defined earlier, we have formula derivative of a <em>1-dimension</em> function $f(x)$:
+\(\frac{\partial f}{\partial x}=f(x+1)-f(x)
+\tag1\)
+ and</p>
+  </li>
+</ul>
+
+\[\frac{\partial^2 f}{\partial x^2}=f(x+1)+f(x-1)-2f(x) \tag2\]
+
+<ul>
+  <li>Note: In formula $(1)$,  we use called <em>"look ahead"</em>. So we can also use $f(x)-f(x-1)$. Both are satisfies all terms we list above.</li>
+</ul>
+
+<h4 id="3-second-derivative-for-image-processing---the-laplacian">3. Second derivative for image processing - The Laplacian</h4>
+
+<ul>
+  <li>
+    <p>In previous section, we define derivative for one-dimension function. In there, out object is image, a 2-dimensions function. Therefore, we will show second-derivative formula knows as the name <em>Laplacian</em>:
+\(\nabla^2 f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}\tag3\)
+with:
+\(\frac{\partial^2 f}{\partial x^2}=f(x+1,y)+f(x-1,y)-2f(x,y) \tag4\)
+and
+\(\frac{\partial^2 f}{\partial y^2}=f(x,y+1)+f(x,y-1)-2f(x,y) \tag5\)</p>
+  </li>
+  <li>
+    <p>So we have:
+\(\nabla^2 f=f(x+1,y)+f(x-1,y)+f(x,y+1)+f(x,y-1)-4f(x,y) \tag6\)</p>
+  </li>
+  <li>
+    <p>Base on $(6)$, we can create a kernel to compute <em>second-derivative</em> uses for convolution: $\begin{bmatrix}0&amp;1&amp;0 \ 1&amp;-4&amp;1 \ 0&amp;1&amp;0\end{bmatrix} (7)$. In many situation, we can use diagonal derivative or some variant, we may be have $\begin{bmatrix}0&amp;-1&amp;0 \ -1&amp;4&amp;-1 \ 0&amp;-1&amp;0\end{bmatrix}(8) $, $\begin{bmatrix}1&amp;1&amp;1 \ 1&amp;-8&amp;1 \ 1&amp;1&amp;1\end{bmatrix} (9)$, $\begin{bmatrix}-1&amp;-1&amp;-1 \ -1&amp;8&amp;-1 \ -1&amp;-1&amp;-1\end{bmatrix} (10)$.</p>
+  </li>
+  <li>
+    <p>L<em>aplacian</em> is a derivative operator, it highlights sharp intensity transitions in image and de-emphasizes region of slowly varying intensities. This tend to produce image that have grayish edge lines and featureless background.</p>
+  </li>
+  <li>
+    <p>If we define kernel with negative center coefficient, then we <em>subtract</em> the <em>Laplacian</em> image from the original. Thus, basic way to use <em>Laplacian</em> for image sharpening is:
+\(g(x,y)=f(x,y)+c[\nabla^2f(x,y)]\tag{11}\)
+where $f(x,y), \ g(x,y)$ is the input and sharpened image, respectively. We let $c=-1$ if the center Laplacian kernel is negative and $c=1$ in the rest.</p>
+  </li>
+  <li>
+    <p>Ví dụ:</p>
+  </li>
+</ul>
+
+<p>
+    <img src="https://github.com/khoablog/img/blob/master/sharpen.png?raw=true" style="zoom:100%," />
+    </p>
+<center><b>a b</b></center>
+<center><b>c d</b></center>
+<center><i>a. Original image</i></center>
+<center><i>b. Laplacian image</i></center>
+<center><i>c. Image sharpened using c=-1, kernel (7)</i></center>
+<center><i>d. Image sharpened using c=-1, kernel (9)</i></center>
+
 
   </div>
 </div>
