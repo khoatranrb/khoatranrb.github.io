@@ -18,10 +18,6 @@
     
     
     
-    
-    <link rel="stylesheet" href="/assets/css/index.css">
-    
-    
     <link rel="stylesheet" href="/assets/css/syntax.css">
     <link rel="alternate" title="Beta" href="http://khoablogs.github.io">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -31,15 +27,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Science Blog!" />
 <meta property="og:description" content="Science Blog!" />
-<link rel="canonical" href="http://localhost:4000/page8/" />
-<meta property="og:url" content="http://localhost:4000/page8/" />
+<link rel="canonical" href="http://localhost:4000/MD/cvx2" />
+<meta property="og:url" content="http://localhost:4000/MD/cvx2" />
 <meta property="og:site_name" content="Khoa Blog" />
-<link rel="prev" href="http://localhost:4000/page7" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Khoa Blog" />
 <meta name="google-site-verification" content="UA-96359860-1" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/page8/","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/MD/cvx2","headline":"Khoa Blog","description":"Science Blog!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -83,123 +78,52 @@
   <h3></h3>
 </div>
 <div class="row">
-  <div class="row">
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">DSA_2: Sắp xếp chèn | Insertion sort.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          16/02/2020 15:31
-        </p>
-        <p id="post-content"><h5 id="1-thuật-toán"><strong>1. Thuật toán:</strong></h5>
+  <h4 id="1-convex-sets"><strong>1. Convex sets</strong></h4>
 
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/02/16/dsa-2">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">DSA_1: Sắp xếp nổi bọt | Bubble sort.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          15/02/2020 15:30
-        </p>
-        <p id="post-content"><h5 id="1-góc-nhìn"><strong>1. Góc nhìn:</strong></h5>
+<ul>
+  <li>
+    <p><strong><em>Definition 1:</em></strong> <em>A set $\mathbf{C}$ is <strong>convex</strong> if the line segment between any two distinct points in  $\mathbf{C}$ lies in  $\mathbf{C}$.</em></p>
 
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/02/15/dsa-1">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">Welcome to Khoa Blog!</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          01/01/2020 00:30
-        </p>
-        <p id="post-content">​	Welcome to <strong>Khoa Blog</strong>. My blog write about <strong>mathematics</strong> and <strong>computer science</strong>.
-
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/01/01/welcome-to-khoa-blog">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12 center-align">
-    <ul class="pagination">
-      <li class="waves-effect">
-        
-        
-        <a href="/page7">
-        
-        
-          <i class="material-icons">chevron_left</i>
-        </a>
-      </li>
-      
-      <li class="waves-effect">
-        <a href="/">1</a>
-      
-      </li>
-      
-      
-      <li class="waves-effect"><a href="/page2">2</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page3">3</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page4">4</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page5">5</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page6">6</a></li>
-      
-      
-      
-      <li class="waves-effect"><a href="/page7">7</a></li>
-      
-      
-      
-      <li class="active teal"><a href="#!">8</a></li>
-      
-      
-      <li class="disabled">
-        
-        <a href="#!">
-        
-          <i class="material-icons">chevron_right</i>
-        </a>
-      </li>
+    <ul>
+      <li>For any $\mathbf{x_1}$, $\mathbf{x_2}$ $\in\mathbf{C}$, $\theta\in[0,1]$, we have $\theta\mathbf{x_1}+(1-\theta)\mathbf{x_2}\in\mathbf{C}$.</li>
     </ul>
-  </div>
-</div>
+  </li>
+  <li>With $\forall_{i=1}^k\mathbf{x}<em>i\in\mathbf{C}$ and $\begin{cases}\forall</em>{i=1}^k\theta_i\ge0\\sum_{i=1}^k\theta_i=1\end{cases}$, we call a point of a form $\sum_{i=1}^k\theta_i\mathbf{x}_i$ is a convex combination.</li>
+  <li>As with <em>affine sets</em> (mentioned in <a href="https://khoatranrb.github.io/2021/03/15/cvx1" style="color:green">CVX_1</a>), we can show that a set is convex if it contains every convex combination of its points. So we ignore the proof.</li>
+  <li><strong><em>Definition 2:</em></strong> <em>A <strong>convex hull</strong> of a set $\mathbf{X}$, denoted $\text{conv}\mathbf{X}$ is a set of all convex combinations of points in $\mathbf{X}$.</em>
+  \(\text{conv}\mathbf{X}=\biggl\{\sum_{i=1}^k\theta_i\mathbf{x}_i \ \biggl|\ \forall_{i=1}^k\mathbf{x}_i\in\mathbf{X},\ \forall_{i=1}^k\theta_i\ge0,\ \sum_{i=1}^k\theta_i=1\biggl\}\)</li>
+</ul>
+
+<h4 id="2-cones"><strong>2. Cones</strong></h4>
+<ul>
+  <li><strong><em>Definition 3:</em></strong> <em>A set $\mathbf{C}$ is called <strong>cone</strong> or <strong>nonnegative homogeneous</strong> if for every $\mathbf{x}\in\mathbf{C}$ and $\theta\ge0$, we have $\theta\mathbf{x}\in\mathbf{C}$.</em></li>
+  <li>
+    <p><strong><em>Definition 4:</em></strong> <em>A set $\mathbf{C}$ is <strong>convex cone</strong> if it is convex and a cone.</em></p>
+  </li>
+  <li>
+    <p>For any $\mathbf{x_1}, \mathbf{x_2}\in\mathbf{C}$ and $\theta_1,\theta_2\ge0$, we have $\theta_1\mathbf{x_1}+\theta_2\mathbf{x_2}\in\mathbf{C}$.</p>
+  </li>
+  <li>Similar to convex sets, we can define a point $\sum_{i=1}^k\theta_i\mathbf{x}<em>i$ is a *conic combination* with $\forall</em>{i=1}^k\mathbf{x}<em>i\in\mathbf{C}$ and $\forall</em>{i=1}^k\theta_i\ge0$. And again, a set is cone if it contains every conic combination of its.</li>
+  <li><strong><em>Definition 5:</em></strong> <em>The <strong>conic hull</strong> of a set $\mathbf{X}$ is the set of all conic combinations of points in $\mathbf{X}$</em>:
+  \(\biggl\{\sum_{i=1}^k\theta_i\mathbf{x}_i \ \biggl|\ \forall_{i=1}^k\mathbf{x}_i\in\mathbf{X},\ \forall_{i=1}^k\theta_i\ge0\biggl\}\)
+  <em>which is also smallest convex cone that contains $\mathbf{X}$.</em></li>
+</ul>
+
+<h4 id="reference"><strong>Reference:</strong></h4>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Chapter 2</td>
+          <td>Convex Optimization.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
 </div>
 </div>
 
