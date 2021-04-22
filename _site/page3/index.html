@@ -89,6 +89,34 @@
   <div class="col s12">
     <div class="card hoverable">
       <div class="card-content">
+        <span id="post-title" class="card-title">DL_2: Singular Value Decomposition | 2.8.</span>
+        <p id="post-date">
+          <i class="material-icons">date_range</i>
+          29/05/2020 15:30
+        </p>
+        <p id="post-content">
+<html>
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width initial-scale=1" />
+<title>DL_2</title></head>
+<body><ul>
+<li>We have introduced <em>the matrix decomposition</em> in <a href="https://khoablog.github.io/2020/05/14/dl-1" style="color:green">DL_1</a> which have many applications. In this article, we will discuss about using <em>the matrix decomposition</em> to obtain <em>the best possible approximation</em> of a given matrix, called a <em>matrix of low rank</em>.</li>
+<li>A <em>low rank approximation</em> can be considered a <em>compression</em> of the data represented by the given matrix.</li>
+
+</ul></body></html>
+</p>
+      </div>
+      <div class="card-action">
+        <a href="/2020/05/29/dl-2">
+          Read More
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col s12">
+    <div class="card hoverable">
+      <div class="card-content">
         <span id="post-title" class="card-title">DL_1: Eigendecomposition | 2.7.</span>
         <p id="post-date">
           <i class="material-icons">date_range</i>
@@ -263,34 +291,6 @@ And:
       </div>
       <div class="card-action">
         <a href="/2020/04/28/uml-5">
-          Read More
-        </a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col s12">
-    <div class="card hoverable">
-      <div class="card-content">
-        <span id="post-title" class="card-title">UML_4: PAC Learning | 3.1.</span>
-        <p id="post-date">
-          <i class="material-icons">date_range</i>
-          27/04/2020 06:23
-        </p>
-        <p id="post-content">
-<html>
-<head>
-<meta charset="UTF-8" /><meta name="viewport" content="width=device-width initial-scale=1" />
-<title>3.1. PAC learning</title></head>
-<body><h5><strong>3.1. PAC learning</strong></h5>
-<ul>
-<li>In <a href="https://khoablog.github.io/2020/04/05/uml-3">UML_3</a>, we have shown that for a finite <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.963ex" height="2.085ex" viewBox="0 -761.8 845 897.9" role="img" focusable="false" style="vertical-align: -0.316ex;"><defs><path stroke-width="0" id="E18-MJCAL-48" d="M18 487Q18 496 29 517T67 566T127 621T216 665T330 683Q359 683 376 669T397 643T400 622Q400 584 382 488T348 343Q348 342 467 342H587L594 366Q615 440 648 534T690 641Q701 656 723 669T764 683Q783 683 783 672L750 578Q716 485 677 346T625 101Q624 92 623 82T622 65T621 56Q621 20 658 20Q666 20 701 25Q709 52 736 69T785 87Q803 87 803 75T791 44T754 3T685 -33T588 -48Q568 -48 562 -46Q522 -31 522 13V23Q531 129 562 250L569 281L565 280Q561 278 556 277T549 274L438 273H328L321 249Q307 202 275 107T232 0Q219 -16 196 -28T155 -41Q149 -41 145 -39T140 -34T139 -29Q139 -24 148 -3T181 86T233 247Q240 270 240 272Q240 273 194 273H169Q139 273 139 285Q139 295 153 308T187 332Q206 341 236 342L260 343L264 359Q278 414 289 482T300 578Q300 613 260 613H254Q198 613 169 592Q148 578 127 544T104 508Q72 478 37 475Q18 475 18 487Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E18-MJCAL-48" x="0" y="0"></use></g></svg></span><script type="math/tex">\mathcal{H}</script> hypothesis class and a sufficiently large training sample (follow the <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.791ex" height="1.982ex" viewBox="0 -761.8 771 853.2" role="img" focusable="false" style="vertical-align: -0.212ex;"><defs><path stroke-width="0" id="E23-MJCAL-44" d="M37 475Q19 475 19 487Q19 536 103 604T327 682H356Q386 683 408 683H419Q475 683 506 681T582 668T667 633Q766 571 766 450Q766 365 723 287T611 152T455 57T279 6Q248 1 160 0Q148 0 131 0T108 -1Q72 -1 72 11Q72 24 90 40T133 64L144 68L152 88Q247 328 272 587Q275 613 272 613Q272 613 269 613Q225 610 195 602T149 579T129 556T119 532Q118 530 116 525T113 518Q102 502 80 490T37 475ZM665 407Q665 596 412 613Q403 614 383 614Q370 614 370 612Q370 598 363 542T323 357T242 103L228 69H265Q391 73 481 119Q536 148 575 188T633 268T658 338T665 392V407Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E23-MJCAL-44" x="0" y="0"></use></g></svg></span><script type="math/tex">\mathcal{D}</script> distribution and labeling function <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.277ex" height="2.397ex" viewBox="0 -761.8 550 1032" role="img" focusable="false" style="vertical-align: -0.627ex;"><defs><path stroke-width="0" id="E25-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E25-MJMATHI-66" x="0" y="0"></use></g></svg></span><script type="math/tex">f</script>) then output of <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.963ex" height="2.085ex" viewBox="0 -761.8 845 897.9" role="img" focusable="false" style="vertical-align: -0.316ex;"><defs><path stroke-width="0" id="E18-MJCAL-48" d="M18 487Q18 496 29 517T67 566T127 621T216 665T330 683Q359 683 376 669T397 643T400 622Q400 584 382 488T348 343Q348 342 467 342H587L594 366Q615 440 648 534T690 641Q701 656 723 669T764 683Q783 683 783 672L750 578Q716 485 677 346T625 101Q624 92 623 82T622 65T621 56Q621 20 658 20Q666 20 701 25Q709 52 736 69T785 87Q803 87 803 75T791 44T754 3T685 -33T588 -48Q568 -48 562 -46Q522 -31 522 13V23Q531 129 562 250L569 281L565 280Q561 278 556 277T549 274L438 273H328L321 249Q307 202 275 107T232 0Q219 -16 196 -28T155 -41Q149 -41 145 -39T140 -34T139 -29Q139 -24 148 -3T181 86T233 247Q240 270 240 272Q240 273 194 273H169Q139 273 139 285Q139 295 153 308T187 332Q206 341 236 342L260 343L264 359Q278 414 289 482T300 578Q300 613 260 613H254Q198 613 169 592Q148 578 127 544T104 508Q72 478 37 475Q18 475 18 487Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E18-MJCAL-48" x="0" y="0"></use></g></svg></span><script type="math/tex">\mathcal{H}</script> will be probably approximately correct. Now, we define <em>Probably Approximately Correct</em> (PAC) learning.</li>
-
-</ul></body></html>
-</p>
-      </div>
-      <div class="card-action">
-        <a href="/2020/04/27/uml-4">
           Read More
         </a>
       </div>
