@@ -78,7 +78,84 @@
   <h3></h3>
 </div>
 <div class="row">
-  
+  <h5 id="1-binomial-distribution"><strong>1. Binomial distribution</strong></h5>
+
+<ul>
+  <li><strong><em>Problem:</em></strong> <em>Toss a coin $n$ times, let $X=1$ represents “obtain a head” and $X=0$ represents “obtain a tail” where $\mathbf{Pr}(X=1)=p$. The probability of obtaining $x$ times $X=1$ is:</em>
+\(\begin{align}
+f(x\ |\ p,n)=\begin{cases}\begin{pmatrix}n\\x\end{pmatrix}p^x(1-p)^{n-x} \ \ \ \ &amp;\text{for } x=0,1,2,...,n,\\ 0 \ \ \ \ &amp;\text{otherwise.}\end{cases}
+\end{align}\tag1\)</li>
+</ul>
+
+<h5 id="2-poisson-distribution"><strong>2. Poisson distribution</strong></h5>
+
+<ul>
+  <li>
+    <p><strong><em>Problem:</em></strong> <em>A store serves $5.1$ customers per hour on average. We want to find the distribution of the number of customers in the specific period of time.</em></p>
+
+    <ul>
+      <li>We can use binomial distribution, but first at all, we have to scale the number of customers per hour to the range $[0,1]$. For example, we can use:
+        <ul>
+          <li>per minute ($n=60$): $p=\displaystyle\frac{5.1}{60}=0.085$</li>
+          <li>per second ($n=3600$): $p=\displaystyle\frac{5.1}{3600}=0.001417$.
+  And now we can use formula $(1)$ to estimate the number of customers per hour/minute/second.</li>
+        </ul>
+      </li>
+      <li>But in Poisson distribution, we have a new approach. Consider:
+  \(\begin{align}
+  \displaystyle\frac{f(x+1)}{f(x)}&amp;=\displaystyle\frac{\begin{pmatrix}n\\x+1\end{pmatrix}p^{x+1}(1-p)^{n-x-1}}{\begin{pmatrix}n\\x\end{pmatrix}p^x(1-p)^{n-x}}\\
+  &amp;=\displaystyle\frac{(n-x)p}{(x+1)(1-p)}.
+  \end{align}\tag2\)</li>
+      <li>If we scale $p$ into small periods ($ms$, $\mu s$, …), then $p\to0^+$ and $n»x$. So we have some approximations $n-x\approx n$, $1-p\approx1$ and:</li>
+    </ul>
+
+    <p>\(\begin{align}
+  \displaystyle\frac{f(x+1)}{f(x)}&amp;\approx\displaystyle\frac{np}{x+1}\\
+  \Rightarrow f(x+1)&amp;\approx f(x)\displaystyle\frac{\lambda}{x+1}\ \ \ \ \text{where }\lambda=np\\
+  &amp;=f(0)\displaystyle\frac{\lambda^{x+1}}{(x+1)!}\\
+  \Rightarrow f(x)&amp;=f(0)\displaystyle\frac{\lambda^{x}}{x!}.\tag3
+  \end{align}\)</p>
+    <ul>
+      <li>Because $f(x)$ is a distribution, we have:
+  \(\begin{align}
+  \sum_{x=0}^{+\infty}f(x)&amp;=1\\
+  \Leftrightarrow f(0)\sum_{x=0}^{+\infty}\frac{\lambda^{x}}{x!}&amp;=1\\
+  f(0)&amp;=\displaystyle\frac{1}{\sum_{x=0}^{+\infty}\displaystyle\frac{\lambda^{x}}{x!}}.\tag4
+  \end{align}\)</li>
+      <li>By <a href="https://en.wikipedia.org/wiki/Taylor_series" style="color:green">Taylor approximation</a>, we can obtain $f(0)=\displaystyle\frac{1}{e^\lambda}=e^{\lambda}$.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong><em>Definition:</em></strong> <em>The Poisson distribution of random variable $x$ with the mean $\lambda&gt;0$ takes the form:</em>
+\(\begin{align}
+\begin{cases}
+f(x\ |\ \lambda)=\displaystyle\frac{e^{-\lambda}\lambda^x}{x!} \ \ \ \ &amp;\text{for } x=0,1,2,...,n,\\ 0 \ \ \ \ &amp;\text{otherwise.}\end{cases}
+\end{align}\tag5\)</p>
+  </li>
+  <li>
+    <p>From our approach, we have a approximation between <strong>Binomial</strong> and <strong>Poisson</strong>:</p>
+  </li>
+</ul>
+
+\[\displaystyle\lim_{n\to+\infty}\begin{pmatrix}n\\x\end{pmatrix}p^x(1-p)^{n-x}=\displaystyle\frac{e^{-np}(np)^x}{x!}\tag6\]
+
+<p>​	for all $x=0,1,…$</p>
+
+<h5 id="reference"><strong>Reference:</strong></h5>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Chapter 5.4</td>
+          <td>Probability and Statistics (Fourth Edition)</td>
+          <td>Morris H. DeGroot &amp; Mark J. Schervish.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
 
 </div>
 </div>
