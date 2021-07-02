@@ -161,6 +161,10 @@
 <lastmod>2021-04-22T09:59:00+07:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/2021/07/02/opt1</loc>
+<lastmod>2021-07-02T10:50:00+07:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/MD/2020-02-29-CV_3-Image-Sharpening</loc>
 </url>
 <url>
@@ -264,5 +268,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page8/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page9/</loc>
 </url>
 </urlset>
