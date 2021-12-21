@@ -101,10 +101,6 @@
 <lastmod>2020-04-27T06:23:23+07:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/2020/04/28/uml-5-Copy</loc>
-<lastmod>2020-04-28T08:36:23+07:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/2020/04/28/uml-5</loc>
 <lastmod>2020-04-28T08:36:23+07:00</lastmod>
 </url>
@@ -171,6 +167,10 @@
 <url>
 <loc>http://localhost:4000/2021/11/24/uml-6</loc>
 <lastmod>2021-11-24T16:36:23+07:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/2021/12/21/opt2</loc>
+<lastmod>2021-12-21T22:50:00+07:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about</loc>
