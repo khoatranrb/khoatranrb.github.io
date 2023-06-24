@@ -214,4 +214,8 @@
 <url>
 <loc>http://localhost:4000/page9/</loc>
 </url>
+<url>
+<loc>http://localhost:4000/MD/Resume.pdf</loc>
+<lastmod>2023-06-11T09:22:55+07:00</lastmod>
+</url>
 </urlset>
